@@ -7,17 +7,20 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopOnNavigate } from './components/ScrollToTopOnNavigate';
 import { Footer } from './components/Footer';
 import { AppRoutes } from './routes';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <GlobalStyles />
-      <ScrollToTopOnNavigate />
-      <Header />
-      <MobileMenu />
-      <AppRoutes />
-      <Footer />
-      <ScrollToTop />
+      <AuthProvider>
+        <GlobalStyles />
+        <ScrollToTopOnNavigate />
+        <Header />
+        <MobileMenu />
+        <AppRoutes />
+        <Footer />
+        <ScrollToTop />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

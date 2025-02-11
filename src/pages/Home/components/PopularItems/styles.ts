@@ -1,82 +1,87 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
+export const Container = styled.div`
   padding: 4rem 0;
-  background: var(--background);
+  background: #fff;
 
   h2 {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 3rem;
     text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary);
   }
 `;
 
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  max-width: 1000px;
+  gap: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 `;
 
 export const Card = styled.div`
-  background: var(--gray-light);
+  background: #111111;
   border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.2s;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
+    display: block;
   }
 
   .content {
     padding: 1.5rem;
+    background: #111111;
 
     h3 {
-      font-size: 1.5rem;
-      color: var(--primary);
+      font-size: 1.25rem;
       margin-bottom: 0.75rem;
+      color: #ffa600;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     p {
-      color: var(--gray);
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
       margin-bottom: 1rem;
+      min-height: 40px;
       line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
     span {
       display: block;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
+      color: rgb(255, 255, 255);
       font-weight: bold;
-      color: var(--secondary);
-      margin-bottom: 1rem;
+      margin-top: 0.5rem;
     }
 
     .order-button {
       display: inline-block;
-      background: var(--secondary);
-      color: var(--background);
+      margin-top: 1rem;
       padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
       border-radius: 4px;
-      font-weight: bold;
-      transition: filter 0.2s;
-      text-align: center;
-      width: 100%;
+      font-weight: 600;
+      transition: background 0.2s;
 
       &:hover {
-        filter: brightness(0.9);
+        background: var(--primary-dark);
       }
     }
   }
