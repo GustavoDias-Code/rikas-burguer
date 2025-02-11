@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  padding: 8rem 0 4rem;
+  padding: 10rem 0 4rem;
   min-height: 100vh;
 
   h1 {
@@ -12,25 +12,177 @@ export const Container = styled.main`
   }
 `;
 
-export const MapContainer = styled.div`
-  margin-bottom: 4rem;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.1);
-  height: 400px;
+export const StoreInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
 
-  .gm-style-iw {
-    padding: 1rem;
-    
-    h3 {
-      font-size: 1.25rem;
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const MapSection = styled.div`
+  .map-container {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      &:hover {
+        .map-overlay {
+          opacity: 1;
+        }
+      }
+    }
+
+    .map-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      span {
+        color: white;
+        font-size: 1.25rem;
+        font-weight: bold;
+        padding: 1rem 2rem;
+        border: 2px solid white;
+        border-radius: 4px;
+      }
+    }
+  }
+`;
+
+export const InfoSection = styled.div`
+  .info-block {
+    background: var(--gray-light);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.75rem;
       color: var(--primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
     p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       color: var(--gray);
-      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+
+      svg {
+        color: var(--secondary);
+      }
+
+      &.details {
+        margin-left: 1.75rem;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+      }
+
+      &.time {
+        color: var(--secondary);
+        font-weight: 500;
+      }
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+
+      h3 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.25rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+
+        svg {
+          color: var(--secondary);
+        }
+      }
+    }
+
+    .maps-button, 
+    .contact-buttons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: filter 0.2s;
+      font-size: 1.125rem;
+    }
+
+    .maps-button {
+      background: var(--primary);
+      color: var(--background);
+      width: 100%;
+      
+      &:hover {
+        filter: brightness(0.9);
+      }
+    }
+
+    .contact-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+
+      .whatsapp-button {
+        background: #25D366;
+        color: var(--background);
+      }
+
+      .phone-button {
+        background: var(--secondary);
+        color: var(--background);
+      }
+
+      a:hover {
+        filter: brightness(0.9);
+      }
     }
   }
 `;

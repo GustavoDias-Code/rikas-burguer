@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   padding: 8rem 0 4rem;
-  background: var(--gray-light);
+  background: var(--primary);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -27,12 +27,12 @@ export const Content = styled.div`
     font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: var(--primary);
+    color: var(--background);
   }
 
   p {
     font-size: 1.25rem;
-    color: var(--gray);
+    color: var(--gray-light);
     margin-bottom: 2rem;
     line-height: 1.6;
   }
@@ -58,6 +58,6 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.3);
   }
 `; 

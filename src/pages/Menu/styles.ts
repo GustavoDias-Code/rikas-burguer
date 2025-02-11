@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  padding: 8rem 0 4rem;
+  padding: 10rem 0 4rem;
   min-height: 100vh;
 
   h1 {
@@ -59,14 +59,6 @@ export const MenuItem = styled.div`
       color: var(--gray);
       margin-bottom: 1rem;
       line-height: 1.4;
-    }
-
-    small {
-      display: block;
-      color: var(--secondary);
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-      font-style: italic;
     }
 
     span {

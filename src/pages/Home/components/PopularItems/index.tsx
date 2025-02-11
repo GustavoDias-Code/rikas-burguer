@@ -5,29 +5,22 @@ import { Link } from 'react-router-dom';
 const popularBurgers = [
   {
     id: 1,
-    name: "Rika's Especial",
-    description: 'Pão brioche, 2 carnes de 180g, queijo cheddar, bacon, alface, tomate, cebola roxa e molho especial da casa.',
-    price: 40.99,
-    image: '/images/burgers/rikas-especial.jpg'
-  },
-  {
-    id: 2,
     name: 'Big Cheese Tudo',
-    description: 'Pão brioche, 2 carnes de 180g, 4 fatias de queijo cheddar, bacon, alface, tomate, cebola roxa e molho especial.',
+    description: 'Pão, hambúrguer artesanal 120g, queijo derretido, maionese especial, dobro de bacon, 2 ovos fritos, alface e tomate.',
     price: 39.99,
     image: '/images/burgers/big-cheese.jpg'
   },
   {
-    id: 3,
-    name: "Rika's Vegetariano",
-    description: 'Pão brioche, hambúrguer de grão de bico, queijo, alface, tomate, cebola roxa e molho especial.',
-    price: 34.99,
-    image: '/images/burgers/vegetariano.jpg'
+    id: 2,
+    name: 'Cheese Salada',
+    description: 'Pão, hambúrguer artesanal 120g, queijo derretido, alface, tomate e maionese especial.',
+    price: 25.99,
+    image: '/images/burgers/cheese-salada.jpg'
   },
   {
-    id: 4,
+    id: 3,
     name: 'Cheddar Bacon',
-    description: 'Pão brioche, carne de 180g, queijo cheddar, bacon crocante, alface, tomate e molho especial.',
+    description: 'Pão, hambúrguer artesanal 120g, cheddar, cebola frita no shoyo, bacon em tiras e maionese.',
     price: 32.99,
     image: '/images/burgers/cheddar-bacon.jpg'
   }

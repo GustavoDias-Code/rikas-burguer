@@ -41,10 +41,35 @@ export const Content = styled.div`
 `;
 
 export const Section = styled.div`
+  .logo {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+    
+    img {
+      height: 130px;
+      width: 130px;
+      object-fit: contain;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      
+      img {
+        height: 110px;
+        width: 110px;
+      }
+    }
+  }
+
   h3 {
-    font-size: 1.25rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-bottom: 1.5rem;
     color: var(--background);
+    letter-spacing: -0.02em;
   }
 
   p {
@@ -53,6 +78,8 @@ export const Section = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
 
     svg {
       color: var(--secondary);
@@ -78,6 +105,8 @@ export const Section = styled.div`
     a {
       color: var(--gray);
       transition: color 0.2s;
+      font-size: 1rem;
+      font-weight: 500;
 
       &:hover {
         color: var(--secondary);
@@ -98,6 +127,39 @@ export const SocialLinks = styled.div`
 
     &:hover {
       color: var(--secondary);
+    }
+  }
+`;
+
+export const AppSection = styled.div`
+  h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--background);
+    letter-spacing: -0.02em;
+  }
+
+  .app-links {
+    display: flex;
+    gap: 1rem;
+
+    .app-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      transition: transform 0.2s;
+
+      svg {
+        font-size: 3rem;
+        color: #EA1D2C;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 `; 

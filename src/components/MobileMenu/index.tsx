@@ -37,8 +37,8 @@ export const MobileMenu: React.FC = () => {
               <nav>
                 <Link to="/" onClick={toggleMenu}>Início</Link>
                 <Link to="/cardapio" onClick={toggleMenu}>Cardápio</Link>
-                <Link to="/sobre" onClick={toggleMenu}>Sobre</Link>
                 <Link to="/lojas" onClick={toggleMenu}>Nossa Loja</Link>
+                <Link to="/sobre" onClick={toggleMenu}>Sobre</Link>
                 <Link to="/contato" onClick={toggleMenu}>Contato</Link>
                 <Link to="/pedidos" onClick={toggleMenu} className="order-button">
                   Peça Agora

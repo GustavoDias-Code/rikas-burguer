@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-
-  &.scrolled {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
+  background: var(--primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
   > div {
     display: flex;
@@ -19,21 +15,39 @@ export const Container = styled.header`
     justify-content: space-between;
   }
 
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
   @media (max-width: 768px) {
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
   }
 `;
 
 export const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  
   a {
-    color: var(--background);
-    transition: color 0.2s;
+    display: block;
+    transition: transform 0.2s;
+    line-height: 0;
 
     &:hover {
-      color: var(--secondary);
+      transform: scale(1.05);
+    }
+  }
+
+  img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      height: 80px;
+      width: 80px;
     }
   }
 `;

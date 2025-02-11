@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Content, Section, SocialLinks } from './styles';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaMapMarkerAlt, FaClock, FaPhone } from 'react-icons/fa';
+import { Container, Content, Section, SocialLinks, AppSection } from './styles';
+import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaClock, FaPhone } from 'react-icons/fa';
+import { SiIfood } from 'react-icons/si';
 
 export const Footer: React.FC = () => {
   return (
     <Container>
       <Content className="container">
         <Section>
-          <h3>Rikas Burguer</h3>
+          <div className="logo">
+            <img src="/images/logo/logo.png" alt="Rikas Burguer" />
+          </div>
           <p>
             Desde 2020 servindo os melhores hambúrgueres artesanais da cidade, 
             com ingredientes selecionados e muito amor em cada preparo.
@@ -59,6 +62,20 @@ export const Footer: React.FC = () => {
             <Link to="/pedidos">Faça seu Pedido</Link>
           </nav>
         </Section>
+
+        <AppSection>
+          <h3>Faça seu pedido pelo App</h3>
+          <div className="app-links">
+            <a 
+              href="https://www.ifood.com.br/delivery/jundiai-sp/rika-s-burguer-residencial-terra-da-uva/5c9b67ed-f575-4573-a1a5-e9cb857ecf16" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="app-button"
+            >
+              <SiIfood />
+            </a>
+          </div>
+        </AppSection>
       </Content>
 
       <div className="bottom">

@@ -15,56 +15,49 @@ const menuItems = {
       name: 'Big Cheese Tudo',
       description: 'Pão, hambúrguer artesanal 120g, queijo derretido, maionese especial, dobro de bacon, 2 ovos fritos, alface e tomate.',
       price: 39.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     },
     {
       id: 3,
       name: 'Cheddar Bacon',
       description: 'Pão, hambúrguer artesanal 120g, cheddar, cebola frita no shoyo, bacon em tiras e maionese.',
       price: 32.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     },
     {
       id: 4,
       name: 'Cheese Bacon',
       description: 'Pão, hambúrguer artesanal 120g, queijo derretido, maionese especial e bacon.',
       price: 28.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     },
     {
       id: 5,
       name: 'Cheese Burguer',
       description: 'Pão, hambúrguer artesanal 120g, queijo derretido e maionese especial.',
       price: 23.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     },
     {
       id: 6,
       name: 'Cheese Egg Salada',
       description: 'Pão, hambúrguer artesanal 120g, queijo derretido, maionese especial, ovo frito, alface e tomate.',
       price: 27.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     },
     {
       id: 7,
       name: 'Cheese Salada',
       description: 'Pão, hambúrguer artesanal 120g, queijo derretido, alface, tomate e maionese especial.',
       price: 25.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     },
     {
       id: 8,
       name: "Rika's Especial",
       description: 'Pão, contra filé em tiras, queijo derretido, queijo gorgonzola, bacon, cebola no shoyo, maionese especial, alface e tomate.',
       price: 40.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     },
     {
       id: 9,
@@ -78,8 +71,7 @@ const menuItems = {
       name: "Rika's Churrasco",
       description: 'Pão, contra filé, queijo derretido, maionese especial, alface e tomate.',
       price: 33.99,
-      image: '/images/burger.jpg',
-      serves: 'Serve 1 pessoa'
+      image: '/images/burger.jpg'
     }
   ],
   portions: [
@@ -226,7 +218,6 @@ export const Menu: React.FC = () => {
                 <div className="content">
                   <h3>{item.name}</h3>
                   <p>{item.description}</p>
-                  {item.serves && <small>{item.serves}</small>}
                   <span>R$ {item.price.toFixed(2)}</span>
                 </div>
               </MenuItem>
