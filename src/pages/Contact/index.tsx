@@ -77,6 +77,7 @@ export const Contact: React.FC = () => {
               <option value="">Selecione um assunto</option>
               <option value="duvida">Dúvida</option>
               <option value="sugestao">Sugestão</option>
+              <option value="elogio">Elogio</option>
               <option value="reclamacao">Reclamação</option>
               <option value="outros">Outros</option>
             </select>
