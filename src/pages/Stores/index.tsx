@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, StoreInfo, MapSection, InfoSection } from './styles';
 import { FaMapMarkerAlt, FaClock, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+
+const mapContainerStyle = {
+  width: '100%',
+  height: '400px'
+};
+
+// Coordenadas da Rikas Burguer
+// Rua Ucilla Lorencini Tafarello, 278, Terra da Uva - Jundiaí/SP
+const center = {
+  lat: -23.1862137,
+  lng: -46.8976504
+};
+
+const markerPosition = {
+  lat: -23.1862137,
+  lng: -46.8976504
+};
 
 export const Stores: React.FC = () => {
+  const [isInfoWindowOpen, setIsInfoWindowOpen] = useState(false);
+
   return (
     <Container>
       <div className="container">
@@ -11,20 +31,35 @@ export const Stores: React.FC = () => {
         <StoreInfo>
           <MapSection>
             <div className="map-container">
-              <a 
-                href="https://maps.app.goo.gl/ftdPhbqH129wB7e8A"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img 
-                  src="/images/map-preview.jpg" 
-                  alt="Localização da Rikas Burguer"
-                  className="map-image"
-                />
-                <div className="map-overlay">
-                  <span>Abrir no Google Maps</span>
-                </div>
-              </a>
+              <LoadScript googleMapsApiKey="AIzaSyAa3nKoFybU8jywW060M35vYlpBQxsGIEY">
+                <GoogleMap
+                  mapContainerStyle={mapContainerStyle}
+                  center={center}
+                  zoom={15}
+                >
+                  <Marker 
+                    position={markerPosition}
+                    onClick={() => setIsInfoWindowOpen(true)}
+                  >
+                    {isInfoWindowOpen && (
+                      <InfoWindow
+                        position={markerPosition}
+                        onCloseClick={() => setIsInfoWindowOpen(false)}
+                      >
+                        <div style={{ padding: '8px', maxWidth: '200px' }}>
+                          <h3 style={{ fontSize: '16px', marginBottom: '8px', color: '#333' }}>Rika's Burguer</h3>
+                          <p style={{ fontSize: '14px', color: '#666', marginBottom: '4px' }}>
+                            Rua Ucilla Lorencini Tafarello, 278
+                          </p>
+                          <p style={{ fontSize: '14px', color: '#666' }}>
+                            Terra da Uva - Jundiaí/SP
+                          </p>
+                        </div>
+                      </InfoWindow>
+                    )}
+                  </Marker>
+                </GoogleMap>
+              </LoadScript>
             </div>
           </MapSection>
 

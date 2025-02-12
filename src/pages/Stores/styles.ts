@@ -10,14 +10,18 @@ export const Container = styled.main`
     margin-bottom: 3rem;
     text-align: center;
   }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
 `;
 
 export const StoreInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
 
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
@@ -27,54 +31,10 @@ export const StoreInfo = styled.div`
 export const MapSection = styled.div`
   .map-container {
     width: 100%;
-    height: 100%;
-    min-height: 400px;
+    height: 400px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 28px rgba(0, 0, 0, 0.1);
-    position: relative;
-
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-
-      &:hover {
-        .map-overlay {
-          opacity: 1;
-        }
-      }
-    }
-
-    .map-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .map-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s;
-
-      span {
-        color: white;
-        font-size: 1.25rem;
-        font-weight: bold;
-        padding: 1rem 2rem;
-        border: 2px solid white;
-        border-radius: 4px;
-      }
-    }
   }
 `;
 
