@@ -1,27 +1,43 @@
-import React, { useState } from 'react';
-import { Container, StoreInfo, MapSection, InfoSection } from './styles';
-import { FaMapMarkerAlt, FaClock, FaPhone, FaWhatsapp } from 'react-icons/fa';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import React, { useState, useEffect } from 'react';
+import { Container, StoreInfo, MapSection, InfoSection, PhoneModal } from './styles';
+import { FaMapMarkerAlt, FaClock, FaPhone, FaWhatsapp, FaTimes } from 'react-icons/fa';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
-const mapContainerStyle = {
-  width: '100%',
-  height: '400px'
-};
+// Corrigindo o ícone do marcador
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
 
 // Coordenadas da Rikas Burguer
-// Rua Ucilla Lorencini Tafarello, 278, Terra da Uva - Jundiaí/SP
-const center = {
-  lat: -23.1862137,
-  lng: -46.8976504
-};
-
-const markerPosition = {
-  lat: -23.1862137,
-  lng: -46.8976504
-};
+// R. Ucilla Lorencini Tafarelo, N°278 - CECAP, Jundiaí - SP, 13214-680
+const position: L.LatLngExpression = [-23.140166, -46.920611];
 
 export const Stores: React.FC = () => {
-  const [isInfoWindowOpen, setIsInfoWindowOpen] = useState(false);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  const handlePhoneClick = (e: React.MouseEvent) => {
+    if (!isMobile) {
+      e.preventDefault();
+      setShowPhoneModal(true);
+    }
+  };
 
   return (
     <Container>
@@ -31,35 +47,46 @@ export const Stores: React.FC = () => {
         <StoreInfo>
           <MapSection>
             <div className="map-container">
-              <LoadScript googleMapsApiKey="AIzaSyAa3nKoFybU8jywW060M35vYlpBQxsGIEY">
-                <GoogleMap
-                  mapContainerStyle={mapContainerStyle}
-                  center={center}
-                  zoom={15}
+              <MapContainer 
+                center={position}
+                zoom={17}
+                scrollWheelZoom={true}
+                style={{ height: '400px', width: '100%', borderRadius: '8px' }}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <Marker position={position}>
+                  <Popup>
+                    <strong>Rika's Burguer</strong><br />
+                    R. Ucilla Lorencini Tafarelo, 278<br />
+                    CECAP - Jundiaí/SP<br />
+                    CEP: 13214-680
+                  </Popup>
+                </Marker>
+              </MapContainer>
+            </div>
+
+            <div className="info-block">
+              <h2>Contato</h2>
+              <div className="contact-buttons">
+                <a 
+                  href="https://wa.me/5511943563172"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="whatsapp-button"
                 >
-                  <Marker 
-                    position={markerPosition}
-                    onClick={() => setIsInfoWindowOpen(true)}
-                  >
-                    {isInfoWindowOpen && (
-                      <InfoWindow
-                        position={markerPosition}
-                        onCloseClick={() => setIsInfoWindowOpen(false)}
-                      >
-                        <div style={{ padding: '8px', maxWidth: '200px' }}>
-                          <h3 style={{ fontSize: '16px', marginBottom: '8px', color: '#333' }}>Rika's Burguer</h3>
-                          <p style={{ fontSize: '14px', color: '#666', marginBottom: '4px' }}>
-                            Rua Ucilla Lorencini Tafarello, 278
-                          </p>
-                          <p style={{ fontSize: '14px', color: '#666' }}>
-                            Terra da Uva - Jundiaí/SP
-                          </p>
-                        </div>
-                      </InfoWindow>
-                    )}
-                  </Marker>
-                </GoogleMap>
-              </LoadScript>
+                  <FaWhatsapp /> WhatsApp
+                </a>
+                <a 
+                  href="tel:+5511943563172"
+                  className="phone-button"
+                  onClick={handlePhoneClick}
+                >
+                  <FaPhone /> Ligar Agora
+                </a>
+              </div>
             </div>
           </MapSection>
 
@@ -68,9 +95,10 @@ export const Stores: React.FC = () => {
               <h2>Endereço</h2>
               <p>
                 <FaMapMarkerAlt />
-                Rua Ucilla Lorencini Tafarello, 278
+                R. Ucilla Lorencini Tafarelo, 278
               </p>
-              <p className="details">Terra da Uva - Jundiaí/SP</p>
+              <p className="details">CECAP - Jundiaí/SP</p>
+              <p className="details">CEP: 13214-680</p>
               <a 
                 href="https://maps.app.goo.gl/ftdPhbqH129wB7e8A"
                 target="_blank"
@@ -96,29 +124,21 @@ export const Stores: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            <div className="info-block">
-              <h2>Contato</h2>
-              <div className="contact-buttons">
-                <a 
-                  href="https://wa.me/5511943563172"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="whatsapp-button"
-                >
-                  <FaWhatsapp /> WhatsApp
-                </a>
-                <a 
-                  href="tel:+5511943563172"
-                  className="phone-button"
-                >
-                  <FaPhone /> Ligar Agora
-                </a>
-              </div>
-            </div>
           </InfoSection>
         </StoreInfo>
       </div>
+
+      {showPhoneModal && (
+        <PhoneModal>
+          <div className="modal-content">
+            <button className="close-button" onClick={() => setShowPhoneModal(false)}>
+              <FaTimes />
+            </button>
+            <h3>Telefone para Contato</h3>
+            <p className="phone-number">(11) 94356-3172</p>
+          </div>
+        </PhoneModal>
+      )}
     </Container>
   );
 }; 

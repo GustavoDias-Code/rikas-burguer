@@ -1,33 +1,104 @@
-import React, { useState, FormEvent } from 'react';
+import React from 'react';
 import { Container, ContactForm, SocialLinks, ContactInfo } from './styles';
 import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaClock, FaPhone } from 'react-icons/fa';
+import { useForm, ValidationError } from '@formspree/react';
 
 export const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [state, handleSubmit] = useForm("mvgzbbra");
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    alert('Mensagem enviada com sucesso!');
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  if (state.succeeded) {
+    return (
+      <Container>
+        <div className="container">
+          <h1>Mensagem Enviada!</h1>
+          <p style={{ textAlign: 'center', fontSize: '1.2rem', marginBottom: '2rem' }}>
+            Obrigado pelo seu contato. Retornaremos em breve!
+          </p>
+          <button 
+            onClick={() => window.location.reload()} 
+            style={{
+              background: 'var(--primary)',
+              color: 'white',
+              border: 'none',
+              padding: '1rem 2rem',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '1rem',
+              display: 'block',
+              margin: '0 auto'
+            }}
+          >
+            Enviar nova mensagem
+          </button>
+        </div>
+      </Container>
+    );
+  }
 
   return (
     <Container>
       <div className="container">
         <h1>Fale Conosco</h1>
+
+        <ContactForm onSubmit={handleSubmit}>
+          <h2>Envie sua Mensagem</h2>
+          <div className="form-group">
+            <label htmlFor="name">Nome</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              disabled={state.submitting}
+            />
+            <ValidationError prefix="Name" field="name" errors={state.errors} />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              disabled={state.submitting}
+            />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="subject">Assunto</label>
+            <select
+              id="subject"
+              name="subject"
+              required
+              disabled={state.submitting}
+            >
+              <option value="">Selecione um assunto</option>
+              <option value="duvida">Dúvida</option>
+              <option value="sugestao">Sugestão</option>
+              <option value="reclamacao">Reclamação</option>
+              <option value="outros">Outros</option>
+            </select>
+            <ValidationError prefix="Subject" field="subject" errors={state.errors} />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="message">Mensagem</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={5}
+              disabled={state.submitting}
+            />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
+          </div>
+
+          <button type="submit" disabled={state.submitting}>
+            {state.submitting ? 'Enviando...' : 'Enviar Mensagem'}
+          </button>
+        </ContactForm>
 
         <ContactInfo>
           <div className="info-section">
@@ -47,7 +118,7 @@ export const Contact: React.FC = () => {
             <p>
               <FaMapMarkerAlt /> Rua Ucilla Lorencini Tafarello, 278
             </p>
-            <p className="address">Terra da Uva - Jundiaí/SP</p>
+            <p className="address">Cecap - Jundiaí/SP</p>
           </div>
 
           <div className="info-section">
@@ -60,64 +131,6 @@ export const Contact: React.FC = () => {
             </p>
           </div>
         </ContactInfo>
-
-        <ContactForm onSubmit={handleSubmit}>
-          <h2>Envie sua Mensagem</h2>
-          <div className="form-group">
-            <label htmlFor="name">Nome</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">E-mail</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="subject">Assunto</label>
-            <select
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Selecione um assunto</option>
-              <option value="duvida">Dúvida</option>
-              <option value="sugestao">Sugestão</option>
-              <option value="reclamacao">Reclamação</option>
-              <option value="outros">Outros</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="message">Mensagem</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={5}
-            />
-          </div>
-
-          <button type="submit">Enviar Mensagem</button>
-        </ContactForm>
 
         <SocialLinks>
           <h2>Siga-nos nas Redes Sociais</h2>
