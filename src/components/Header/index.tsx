@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Nav, Logo, OrderButton } from './styles';
+import { useMenuMobile } from '../../contexts/MenuMobileContext';
 
 export const Header: React.FC = () => {
+  const { isOpen } = useMenuMobile();
+
   return (
     <Container>
       <div className="container">
-        <Logo>
+        <Logo className={isOpen ? 'hidden' : ''}>
           <Link to="/">
             <img src="/images/logo/logo.png" alt="Rikas Burguer" />
           </Link>

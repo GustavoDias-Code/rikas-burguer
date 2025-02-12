@@ -76,6 +76,9 @@ export const MenuItem = styled.div`
   transition: transform 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-5px);
@@ -92,6 +95,9 @@ export const MenuItem = styled.div`
   .content {
     padding: 1.5rem;
     background: #111111;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 
     h3 {
       font-size: 1.25rem;
@@ -107,6 +113,7 @@ export const MenuItem = styled.div`
       margin-bottom: 1rem;
       min-height: 40px;
       line-height: 1.4;
+      flex: 1;
     }
 
     small {
@@ -118,9 +125,10 @@ export const MenuItem = styled.div`
     span {
       display: block;
       font-size: 1.5rem;
-      color:rgb(255, 255, 255);
+      color: rgb(255, 255, 255);
       font-weight: bold;
-      margin-top: 0.5rem;
+      margin-top: auto;
+      padding-top: 1rem;
     }
   }
 `;

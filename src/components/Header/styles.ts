@@ -13,6 +13,9 @@ export const Container = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
   .buttons {
@@ -23,6 +26,10 @@ export const Container = styled.header`
 
   @media (max-width: 768px) {
     padding: 0.5rem 0;
+
+    > div {
+      justify-content: center;
+    }
   }
 `;
 
@@ -48,6 +55,10 @@ export const Logo = styled.div`
     img {
       height: 80px;
       width: 80px;
+    }
+
+    &.hidden {
+      display: none;
     }
   }
 `;
@@ -75,7 +86,7 @@ export const Nav = styled.nav`
 `;
 
 export const OrderButton = styled.button`
-  background: var(--secondary);
+  background: #FF0000;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;

@@ -6,7 +6,7 @@ const menuItems = {
     {
       id: 1,
       name: 'Americano',
-      description: 'Ovo, maionese, alface e tomate.',
+      description: 'Pão, ovo frito, queijo derretido, maionese, alface e tomate.',
       price: 19.99,
       image: '/images/burgers/classic-burger.jpeg'
     },
@@ -254,7 +254,7 @@ export const Menu: React.FC = () => {
   const categories = [
     { id: 'burgers', label: 'BURGERS' },
     { id: 'hotdogs', label: 'HOT DOGS' },
-    { id: 'portions', label: 'ACOMPANHAMENTOS' },
+    { id: 'portions', label: 'PORÇÕES' },
     { id: 'desserts', label: 'SOBREMESAS' },
     { id: 'extras', label: 'EXTRAS' },
     { id: 'drinks', label: 'BEBIDAS' }

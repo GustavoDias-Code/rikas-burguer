@@ -28,6 +28,9 @@ export const Card = styled.div`
   transition: transform 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-5px);
@@ -44,6 +47,11 @@ export const Card = styled.div`
   .content {
     padding: 1.5rem;
     background: #111111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
 
     h3 {
       font-size: 1.25rem;
@@ -59,6 +67,7 @@ export const Card = styled.div`
       margin-bottom: 1rem;
       min-height: 40px;
       line-height: 1.4;
+      flex: 1;
     }
 
     span {
@@ -66,22 +75,25 @@ export const Card = styled.div`
       font-size: 1.5rem;
       color: rgb(255, 255, 255);
       font-weight: bold;
-      margin-top: 0.5rem;
+      margin: 1rem 0;
     }
 
     .order-button {
-      display: inline-block;
+      display: block;
+      width: 100%;
+      max-width: 250px;
       margin-top: 1rem;
       padding: 0.75rem 1.5rem;
-      background: var(--primary);
+      background: var(--secondary);
       color: white;
       text-decoration: none;
       border-radius: 4px;
       font-weight: 600;
+      text-align: center;
       transition: background 0.2s;
 
       &:hover {
-        background: var(--primary-dark);
+        filter: brightness(0.9);
       }
     }
   }
