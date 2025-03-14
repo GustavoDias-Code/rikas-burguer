@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
             <li><Link to="/">Início</Link></li>
             <li><Link to="/cardapio">Cardápio</Link></li>
             <li><Link to="/lojas">Nossa Loja</Link></li>
-            <li><Link to="/sobre">Sobre</Link></li>
+           {/* <li><Link to="/sobre">Sobre</Link></li>*/}
             <li><Link to="/contato">Contato</Link></li>
           </ul>
         </Nav>

@@ -52,9 +52,9 @@ export function MobileMenu() {
                 <Link to="/lojas" onClick={closeMenu}>
                   Nossa Loja
                 </Link>
-                <Link to="/sobre" onClick={closeMenu}>
-                  Sobre
-                </Link>
+                {/* <Link to="/sobre" onClick={closeMenu}>
+                  Sobre 
+                </Link>*/}
                 <Link to="/contato" onClick={closeMenu}>
                   Contato
                 </Link>
